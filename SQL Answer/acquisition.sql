@@ -14,7 +14,7 @@ frequency_per_user_campaign AS (
 	FROM campaign_user
 	GROUP BY pseudo_id, campaign_name
 )
-SELECT campaign_name, AVG(frequency) avg_frequency
+SELECT campaign_name, COUNT(DISTINCT pseudo_id) reach, AVG(frequency) avg_frequency
 FROM frequency_per_user_campaign
 GROUP BY 1;
 
